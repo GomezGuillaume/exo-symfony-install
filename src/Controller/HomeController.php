@@ -2,22 +2,27 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-class HomeController {
+
+class HomeController extends AbstractController {
 
 
     /**
      * @Route("/", name="home")
      */
-    public function home() {
-        var_dump("Bienvenue sur la page d'accueil"); die;
+    public function home(Request $request) {
+
+        $age = $request->query->get('age');
+        var_dump($age); die;
 
     }
 
 
     /**
-     * @Route("/", name="test")
+     * @Route("/test", name="test")
      */
     public function test() {
         var_dump("Bienvenue sur la page test"); die;
@@ -25,20 +30,32 @@ class HomeController {
 
 
     /**
-     * @Route("/", name="article")
+     * @Route("/article", name="article")
      */
     public function article() {
-        var_dump("Bienvenue sur la page article");
+        var_dump("Bienvenue sur la page article"); die;
     }
 
-    
+
     /**
-     * @Route("/", name="contact")
+     * @Route("/contact", name="contact")
      */
     public function contact() {
-        var_dump("Bienvenue sur la page contact");
+        var_dump("Bienvenue sur la page contact"); die;
     }
 
+    /**
+     * @Route("/poker", name = "poker")
+     */
+    public function poker(Request $request) {
+        $age = $request->query->get("age");
+
+            if($age >= 18) {
+                var_dump("Bienvenue sur le site, vous êtes majeur"); die;
+            } else {
+                var_dump("Erreur, vous n'avez pas l'âge requis"); die;
+            }
+    }
 
 }
 
