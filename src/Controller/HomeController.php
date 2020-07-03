@@ -48,13 +48,14 @@ class HomeController extends AbstractController {
      * @Route("/poker", name = "poker")
      */
     public function poker(Request $request) {
+        dump($request); die;
         $age = $request->query->get("age");
 
-            if($age >= 18) {
-                var_dump("Bienvenue sur le site, vous êtes majeur"); die;
-            } else {
-                var_dump("Erreur, vous n'avez pas l'âge requis"); die;
-            }
+        if($age >= 18) {
+            var_dump("Bienvenue sur le site, vous êtes majeur"); die;
+        } else {
+            var_dump("Erreur, vous n'avez pas l'âge requis"); die;
+        }
     }
 
 }
